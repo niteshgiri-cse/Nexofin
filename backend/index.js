@@ -206,7 +206,12 @@ app.post("/newOrder", async(req,res)=>{
 
 
 app.listen(3002, () => {
-  console.log("app started on port 3002");
-  mongoose.connect(url);
-  console.log("DB started !");
+    console.log("App started on port 3002");
+    mongoose.connect(url)
+        .then(() => {
+            console.log("DB Connected");
+        })
+        .catch((err) => {
+            console.error("DB Connection Error:", err);
+        });
 });
